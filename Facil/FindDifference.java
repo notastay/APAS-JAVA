@@ -20,12 +20,14 @@ public class FindDifference {
         String cadPosiciones="";
         String posicionesPosibles="";
         int posicion;
+        int numPosicion;
+        //generar la cadena t
         if(s!=null&&s.matches("[a-z]+")){
             for (int i = 0; i < s.length(); i++) {
                 posicionesPosibles+=i+"";
             }
             for (int i = 0; i < s.length(); i++) {
-                int numPosicion=ThreadLocalRandom.current().nextInt(0,posicionesPosibles.length()+1);
+                numPosicion=ThreadLocalRandom.current().nextInt(0,posicionesPosibles.length());
                 cadPosiciones+=posicionesPosibles.charAt(numPosicion)+"";
                 posicionesPosibles=posicionesPosibles.replace(posicionesPosibles.charAt(numPosicion)+"","");
 
@@ -35,9 +37,24 @@ public class FindDifference {
                 posicion=Integer.parseInt(charActual);
                 t+=s.charAt(posicion)+"";
             }
-            t+=alfabeto.charAt(ThreadLocalRandom.current().nextInt(alfabeto.length()+1));
-            return t;
+            String letraExtra=alfabeto.charAt(ThreadLocalRandom.current().nextInt(alfabeto.length()))+"";
+            StringBuilder sb=new StringBuilder(t);
+            numPosicion=ThreadLocalRandom.current().nextInt(1,s.length());
+            sb=sb.insert(numPosicion,letraExtra);
+
+            //comparar las cadenas
+            for (int i = 0; i < t.length(); i++) {
+                for (int j = 0; j < s.length(); j++) {
+                    String charComparar=t.substring(i, i+1);
+                    if(charComparar.equals(s.charAt(i)+"")){
+                        
+                    }
+                }
+            }
+            return sb.toString();
         }
+
+
         return "ERROR";
     }
 }
