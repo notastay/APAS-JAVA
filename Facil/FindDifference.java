@@ -42,15 +42,8 @@ public class FindDifference {
             numPosicion=ThreadLocalRandom.current().nextInt(1,s.length());
             sb=sb.insert(numPosicion,letraExtra);
 
-            //comparar las cadenas
-            for (int i = 0; i < t.length(); i++) {
-                for (int j = 0; j < s.length(); j++) {
-                    String charComparar=t.substring(i, i+1);
-                    if(charComparar.equals(s.charAt(i)+"")){
-                        
-                    }
-                }
-            }
+            //TODO comparar las cadenas
+            
             return sb.toString();
         }
 
