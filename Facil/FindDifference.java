@@ -11,23 +11,32 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class FindDifference {
     public static void main(String[] args) {
-        
+        System.out.println(letraDistinta("abcde"));
     }
 
     public static String letraDistinta(String s){
         String alfabeto="abcdefghijklmnopqrstuvwxyz";
         String t="";
         String cadPosiciones="";
+        String posicionesPosibles="";
         int posicion;
-        if(s!=null&&s.matches("[a-z]")){
+        if(s!=null&&s.matches("[a-z]+")){
             for (int i = 0; i < s.length(); i++) {
-                cadPosiciones+=ThreadLocalRandom.current().nextInt(0,s.length()+1)+"";
+                posicionesPosibles+=i+"";
+            }
+            for (int i = 0; i < s.length(); i++) {
+                int numPosicion=ThreadLocalRandom.current().nextInt(0,posicionesPosibles.length()+1);
+                cadPosiciones+=posicionesPosibles.charAt(numPosicion)+"";
+                posicionesPosibles=posicionesPosibles.replace(posicionesPosibles.charAt(numPosicion)+"","");
+
             }
             for (int i = 0; i < s.length(); i++) {
                 String charActual=cadPosiciones.substring(i, i+1);
                 posicion=Integer.parseInt(charActual);
-                t+=s.charAt(posicion);
+                t+=s.charAt(posicion)+"";
             }
+            t+=alfabeto.charAt(ThreadLocalRandom.current().nextInt(alfabeto.length()+1));
+            return t;
         }
         return "ERROR";
     }
